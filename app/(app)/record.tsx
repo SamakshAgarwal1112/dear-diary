@@ -1,10 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-// Phase 3: Camera, recording controls, save/discard modal goes here.
 export default function RecordScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.placeholder}>Camera coming in Phase 3</Text>
+      <Text style={styles.placeholder}>Camera</Text>
     </View>
   );
 }
