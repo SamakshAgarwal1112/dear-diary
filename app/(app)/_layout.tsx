@@ -1,28 +1,20 @@
-import { Pressable } from 'react-native';
 import { Tabs } from 'expo-router';
+import { Alert } from 'react-native';
 
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { useAuth } from '@/contexts/auth-context';
+import { IconSymbol } from '@/components/ui/icon-symbol';
+import { recordingState } from '@/utils/recording-state';
 
 export default function AppLayout() {
   const colorScheme = useColorScheme();
-  const { signOut } = useAuth();
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: true,
-        headerRight: () => (
-          <Pressable
-            onPress={signOut}
-            style={{ marginRight: 16 }}
-            hitSlop={8}>
-            <IconSymbol size={22} name="rectangle.portrait.and.arrow.right" color={Colors[colorScheme ?? 'light'].icon} />
-          </Pressable>
-        ),
+        tabBarLabelStyle: { fontSize: 14 },
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="record"
@@ -41,6 +33,14 @@ export default function AppLayout() {
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="play.rectangle.fill" color={color} />
           ),
+        }}
+        listeners={{
+          tabPress: (e) => {
+            if (recordingState.isActive) {
+              e.preventDefault();
+              Alert.alert('Recording in progress', 'Stop recording before switching tabs.');
+            }
+          },
         }}
       />
     </Tabs>
