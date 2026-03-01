@@ -28,6 +28,7 @@ export default function AppLayout() {
         name="record"
         options={{
           title: 'Record',
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="video.fill" color={color} />
           ),
