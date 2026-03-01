@@ -33,8 +33,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const getAccessToken = async (): Promise<string> => {
-    const { accessToken } = await GoogleSignin.getTokens();
-    return accessToken;
+    try {
+      const { accessToken } = await GoogleSignin.getTokens();
+      return accessToken;
+    } catch {
+      await GoogleSignin.signInSilently();
+      const { accessToken } = await GoogleSignin.getTokens();
+      return accessToken;
+    }
   };
 
   const signIn = async () => {

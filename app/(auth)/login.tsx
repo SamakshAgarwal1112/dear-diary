@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Pressable, ActivityIndicator } from 'react-native';
 import { useState } from 'react';
-import { useAuth, statusCodes } from '@/contexts/auth-context';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function LoginScreen() {
   const { signIn } = useAuth();
@@ -13,10 +13,7 @@ export default function LoginScreen() {
     try {
       await signIn();
     } catch (e: any) {
-      if (e.code === statusCodes.SIGN_IN_CANCELLED) {
-      } else {
-        setError('Sign in failed. Please try again.');
-      }
+      setError(`Sign in failed (${e.code ?? 'unknown'}): ${e.message ?? ''}`);
     } finally {
       setLoading(false);
     }
