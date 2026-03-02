@@ -37,7 +37,8 @@
         {
           "cameraPermission": "Dear Diary needs camera access to record your entries.",
           "microphonePermission": "Dear Diary needs microphone access to record audio with your entries.",
-          "recordAudioAndroid": true
+          "recordAudioAndroid": true,
+          "videoQuality": "480p"
         }
       ],
       "@react-native-firebase/app",

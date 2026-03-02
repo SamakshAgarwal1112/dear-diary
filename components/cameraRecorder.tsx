@@ -6,10 +6,10 @@ import { CameraView } from 'expo-camera';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useEffect, useRef, useState } from 'react';
 import {
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 export default function CameraRecorder() {
@@ -94,6 +94,7 @@ export default function CameraRecorder() {
         style={StyleSheet.absoluteFill}
         facing="front"
         mode="video"
+        videoQuality="480p"
       />
 
       {isRecording && (

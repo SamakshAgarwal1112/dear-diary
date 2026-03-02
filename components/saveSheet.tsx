@@ -1,5 +1,6 @@
 import { useAuth } from '@/contexts/auth-context';
-import { clearFolderCache, ensureDiaryFolder, uploadVideo } from '@/services/drive';
+import { clearFolderCache, ensureDiaryFolder } from '@/services/drive';
+import { uploadVideo } from '@/services/upload';
 import { styles } from '@/styles/recordStyles';
 import { buildFilename, todayISO } from '@/utils/record';
 import * as FileSystem from 'expo-file-system/legacy';
